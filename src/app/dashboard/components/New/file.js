@@ -2,7 +2,7 @@
 
 import PlusIcon from "/public/svg/Plus.svg";
 import MicIcon from "/public/svg/Mic.svg";
-
+import ModalDialog from "../../components/RecordingDialog";
 import { useState } from "react";
 import Button from "../../components/Button";
 
@@ -10,15 +10,23 @@ import { Dialog, DialogBackdrop, DialogPanel } from "@headlessui/react"; // Exam
 
 export default function NewFile() {
   const [isModalOpen, setModalOpen] = useState(false);
+  const [isModalOpen2, setModalOpen2] = useState(false);
+
   const openModal = () => setModalOpen(true);
   const closeModal = () => setModalOpen(false);
+  const openModal2 = () => setModalOpen2(true);
+  const closeModal2 = () => setModalOpen2(false);
 
   return (
     <section className="mt-6">
       <div className="flex justify-between items-center bg-white">
         <div className="text-xl font-bold">Family</div>
         <div className="flex items-center justify-center">
-          <Button icon={<MicIcon />} text="Create Recording" />
+          <Button
+            onClick={openModal2}
+            icon={<MicIcon />}
+            text="Create Recording"
+          />
         </div>
       </div>
 
@@ -40,6 +48,8 @@ export default function NewFile() {
           </div>
         </div>
       </div>
+
+      <ModalDialog isModalOpen={isModalOpen2} closeModal={closeModal2} />
 
       <Dialog open={isModalOpen} onClose={closeModal} className="relative z-10">
         <DialogBackdrop className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" />

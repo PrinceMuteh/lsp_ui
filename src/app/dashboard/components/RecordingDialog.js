@@ -4,6 +4,8 @@ import { Dialog } from "@headlessui/react";
 import MicOffIcon from "/public/svg/MicOff.svg";
 import MicDark from "/public/svg/MicDark.svg";
 import FrameIcon from "/public/svg/Frame.svg";
+import Link from "next/link";
+
 import Button from "../components/Button";
 
 const ModalDialog = ({ isModalOpen, closeModal }) => {
@@ -76,10 +78,12 @@ const ModalDialog = ({ isModalOpen, closeModal }) => {
                     <FrameIcon className="text-black flex  items-end justify-end justify-items-end" />
                   </div>
                 </div>
-                <Button
-                  text="Start recording"
-                  className="w-full flex justify-center items-center bg-secondaryBg  text-white font-normal py-3 px-4 rounded-lg"
-                />
+                <Link href="/live" className="mt-4">
+                  <Button
+                    text="Start recording"
+                    className="w-full flex justify-center items-center bg-secondaryBg  text-white font-normal py-3 px-4 rounded-lg"
+                  />
+                </Link>
               </form>
             </div>
           </Dialog.Panel>
